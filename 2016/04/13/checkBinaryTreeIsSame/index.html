@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++,二叉树," />
 
 
 
@@ -80,15 +80,16 @@
 
 
 
-<meta name="description" content="旋转，跳跃，我闭着眼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PengZh.xyz">
-<meta property="og:url" content="http://pengzhxyz.github.io/index.html">
+<meta name="description" content="今天在Skype上面试了微软的实习，聊了几句后面试官开始考Coding的题目了，第一个题目是关于二叉树的。这题目是挺简单的，但上次看二叉树还是大二上的时候，所以当时我就懵了，然后就没有然后了，面试官也就没有给第二题的机会了。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断两个二叉树的结构是否相同（微软2016实习面试题）">
+<meta property="og:url" content="http://pengzhxyz.github.io/2016/04/13/checkBinaryTreeIsSame/index.html">
 <meta property="og:site_name" content="PengZh.xyz">
-<meta property="og:description" content="旋转，跳跃，我闭着眼">
+<meta property="og:description" content="今天在Skype上面试了微软的实习，聊了几句后面试官开始考Coding的题目了，第一个题目是关于二叉树的。这题目是挺简单的，但上次看二叉树还是大二上的时候，所以当时我就懵了，然后就没有然后了，面试官也就没有给第二题的机会了。。。">
+<meta property="og:updated_time" content="2016-04-13T14:29:52.110Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PengZh.xyz">
-<meta name="twitter:description" content="旋转，跳跃，我闭着眼">
+<meta name="twitter:title" content="判断两个二叉树的结构是否相同（微软2016实习面试题）">
+<meta name="twitter:description" content="今天在Skype上面试了微软的实习，聊了几句后面试官开始考Coding的题目了，第一个题目是关于二叉树的。这题目是挺简单的，但上次看二叉树还是大二上的时候，所以当时我就懵了，然后就没有然后了，面试官也就没有给第二题的机会了。。。">
 
 
 
@@ -106,7 +107,7 @@
   };
 </script>
 
-  <title> PengZh.xyz </title>
+  <title> 判断两个二叉树的结构是否相同（微软2016实习面试题） | PengZh.xyz </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,9 +128,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -206,9 +205,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -228,10 +227,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/04/13/checkBinaryTreeIsSame/" itemprop="url">
-                  判断两个二叉树的结构是否相同（微软2016实习面试题）
-                </a>
+                判断两个二叉树的结构是否相同（微软2016实习面试题）
               
             
           </h1>
@@ -296,163 +292,71 @@
       
 
       
-        
-          <p>今天在Skype上面试了微软的实习，聊了几句后面试官开始考Coding的题目了，第一个题目是关于二叉树的。这题目是挺简单的，但上次看二叉树还是大二上的时候，所以当时我就懵了，然后就没有然后了，面试官也就没有给第二题的机会了。。。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/checkBinaryTreeIsSame/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <p>今天在Skype上面试了微软的实习，聊了几句后面试官开始考Coding的题目了，第一个题目是关于二叉树的。这题目是挺简单的，但上次看二叉树还是大二上的时候，所以当时我就懵了，然后就没有然后了，面试官也就没有给第二题的机会了。。。</p>
+<a id="more"></a>
+<p>结束后痛定思痛，赶紧复习了下二叉树的遍历，把这个简单的题目解了出来</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给出两个二叉树的头节点，写一个<code>bool</code>返回值的函数判断二叉树的结构是否相同。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>利用递归：</p>
+<p>先判断两个节点是否相同(同为NULL或都不为NULL)，</p>
+<p>若不同，说明该层节点不同，则返回<code>false</code></p>
+<p>若相同且都为NULL则说明到树底了，返回<code>true</code></p>
+<p>若相同且都不为NULL则需要判断子节点的结构是否相同，也就是要对两个树的左子节点和右子节点递归。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> BinaryNode&#123;</span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	BinaryNode* lChild;</span><br><span class="line">	BinaryNode* rChild;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CheckIsSame</span><span class="params">(BinaryNode* tree1, BinaryNode* tree2)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>((tree1==<span class="literal">NULL</span>)==(tree2 == <span class="literal">NULL</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 同为NULL，说明到树底，且相同</span></span><br><span class="line">		<span class="keyword">if</span>(tree1==<span class="literal">NULL</span> &amp;&amp; tree2 == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="comment">// 同为非NULL，判断他们的子节点</span></span><br><span class="line">		<span class="keyword">bool</span> result = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">bool</span> rLeft =CheckIsSame(tree1-&gt;lChild,tree2-&gt;lChild);</span><br><span class="line">		<span class="keyword">bool</span> rRight =CheckIsSame(tree1-&gt;rChild,tree2-&gt;rChild);</span><br><span class="line">		<span class="keyword">return</span> result &amp;&amp; rLeft &amp;&amp; rRight;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 不同，说明结构不同</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>测试了几组数据，运行正确。o(^▽^)o</p>
+
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/09/mstesta-fontsize/" itemprop="url">
-                  微软2016实习生笔试题A：Font Size
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-09T15:11:12+08:00" content="2016-04-09">
-              2016-04-09
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/C/" rel="tag">#C++</a>
           
-
+            <a href="/tags/二叉树/" rel="tag">#二叉树</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/09/mstesta-fontsize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/09/mstesta-fontsize/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>做了下微软2016实习生的笔试题目，Hihocoder平台的，一共有四道题，这是第一题Font Size<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/09/mstesta-fontsize/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/09/mstesta-fontsize/" rel="next" title="微软2016实习生笔试题A：Font Size">
+                <i class="fa fa-chevron-left"></i> 微软2016实习生笔试题A：Font Size
+              </a>
+            
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -460,6 +364,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/13/checkBinaryTreeIsSame/"
+           data-title="判断两个二叉树的结构是否相同（微软2016实习面试题）" data-url="http://pengzhxyz.github.io/2016/04/13/checkBinaryTreeIsSame/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -479,8 +391,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://tp2.sinaimg.cn/2360273757/180/5723397512/1"
@@ -561,6 +482,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">4.</span> <span class="nav-text">结果</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -663,6 +595,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
